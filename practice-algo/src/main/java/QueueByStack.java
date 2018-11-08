@@ -3,13 +3,14 @@ import java.util.Stack;
 /**
  * Created by jay on 2018. 11. 8.
  **/
-public class StackQueue<T> {
+public class QueueByStack<T> {
 
     private Stack<T> inStack;
-//    private Stack<T> inStack;
+    private Stack<T> outStack;
 
-    public StackQueue() {
+    public QueueByStack() {
         inStack = new Stack<>();
+        outStack = new Stack<>();
     }
 
     public void enqueue(T t) {
@@ -17,7 +18,13 @@ public class StackQueue<T> {
     }
 
     public T dequeue() {
-        return inStack.pop();
+        if(outStack.empty()) {
+            while (!inStack.empty()) {
+                outStack.push(inStack.pop());
+            }
+        }
+
+        return outStack.pop();
     }
 
 
