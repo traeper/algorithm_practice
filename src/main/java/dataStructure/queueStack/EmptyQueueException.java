@@ -1,4 +1,4 @@
-package queueStack;
+package dataStructure.queueStack;
 
 /**
  * @author traeper

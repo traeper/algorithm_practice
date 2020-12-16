@@ -1,4 +1,4 @@
-package linkedList;
+package dataStructure.linkedList;
 
 import java.util.NoSuchElementException;
 
@@ -26,7 +26,6 @@ public class LinkedListImpl<E> implements LinkedList<E> {
         } else if (index == size) {
             addLast(element);
         } else {
-            // 비어있는지 or 채워져있는지
             Node<E> node = getNode(index);
             Node<E> prev = node.prev;
             Node<E> newNode = new Node<>(element);
@@ -41,7 +40,7 @@ public class LinkedListImpl<E> implements LinkedList<E> {
 
     private Node<E> getNode(int index) {
         // java.util.LinkedList 구현을 따옴. 성능 개선 코드
-        Node<E> ptr = null;
+        Node<E> ptr;
         if (index < (size >> 1)) {
             ptr = first;
             for (int i = 0; i < index; i++) {
@@ -121,7 +120,6 @@ public class LinkedListImpl<E> implements LinkedList<E> {
 
     @Override
     public E get(int index) {
-        // 비어있는지 or 채워져있는지 or 범위에 속하지 않는지
         if (!isElementIndex(index)) {
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
         }
@@ -190,7 +188,7 @@ public class LinkedListImpl<E> implements LinkedList<E> {
         l.prev = null;
 
         if (prev == null) {
-            first = null; // first도 나 자신이였으니 null 처리
+            first = null;
         } else {
             prev.next = null;
         }

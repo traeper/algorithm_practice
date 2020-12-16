@@ -1,8 +1,6 @@
-package queueStack;
+package dataStructure.queueStack;
 
 import org.junit.jupiter.api.Test;
-import queueStack.EmptyQueueException;
-import queueStack.QueueByStack;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
