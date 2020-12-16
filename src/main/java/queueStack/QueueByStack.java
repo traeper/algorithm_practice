@@ -1,3 +1,6 @@
+package queueStack;
+
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 /**
@@ -5,8 +8,8 @@ import java.util.Stack;
  **/
 public class QueueByStack<T> {
 
-    private Stack<T> inStack;
-    private Stack<T> outStack;
+    private final Stack<T> inStack;
+    private final Stack<T> outStack;
 
     public QueueByStack() {
         inStack = new Stack<>();
@@ -18,17 +21,20 @@ public class QueueByStack<T> {
     }
 
     public T dequeue() {
-        if(outStack.empty()) {
+        if (outStack.empty()) {
             while (!inStack.empty()) {
                 outStack.push(inStack.pop());
             }
         }
 
-        return outStack.pop();
+        try {
+            return outStack.pop();
+        } catch (EmptyStackException emptyStackException) {
+            throw new EmptyQueueException();
+        }
     }
 
-
     public int size() {
-        return inStack.size();
+        return inStack.size() + outStack.size();
     }
 }
