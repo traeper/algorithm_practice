@@ -37,4 +37,9 @@ public class QueueByStack<T> {
     public int size() {
         return inStack.size() + outStack.size();
     }
+
+    public boolean contains(T t) {
+        return outStack.contains(t) || inStack.contains(t);
+    }
+
 }
